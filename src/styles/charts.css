@@ -1,0 +1,297 @@
+.chart {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.chart-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.chart-title {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.chart-title h3 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.chart-title p {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.chart-actions {
+  display: flex;
+  gap: 4px;
+  flex: none;
+}
+
+.chart-plot {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.chart-plot svg {
+  display: block;
+  overflow: visible;
+}
+
+.chart-table table.data th:first-child,
+.chart-table table.data td:first-child {
+  padding-left: 0;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  color: var(--ink-2);
+}
+
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend .key {
+  display: inline-block;
+  flex: none;
+}
+
+.legend .key.line {
+  width: 14px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.legend .key.rect {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.legend .key.band {
+  width: 14px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+svg .grid {
+  stroke: var(--grid);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+svg .axis {
+  stroke: var(--axis);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+svg .tick {
+  fill: var(--ink-3);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+svg .ref {
+  stroke: var(--axis);
+  stroke-width: 1;
+}
+
+svg .ref.strong {
+  stroke: var(--ink-2);
+}
+
+svg .ref-label {
+  fill: var(--ink-2);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+svg .selected {
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+svg .crosshair {
+  stroke: var(--ink-3);
+  stroke-width: 1;
+}
+
+svg .marker {
+  fill: var(--ink-2);
+}
+
+svg .end-label {
+  fill: var(--ink-2);
+  font-size: 12px;
+}
+
+svg .row-label {
+  fill: var(--ink-2);
+  font-size: 12px;
+}
+
+svg .seg-label {
+  fill: #ffffff;
+  font-size: 11px;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+svg .overlay {
+  fill: transparent;
+  outline: none;
+}
+
+svg .overlay:focus-visible {
+  stroke: var(--accent);
+  stroke-width: 1;
+}
+
+svg [tabindex]:focus-visible {
+  outline: none;
+}
+
+svg g[tabindex]:focus-visible rect,
+svg rect[tabindex]:focus-visible {
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 5;
+  min-width: 150px;
+  max-width: 260px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  box-shadow: var(--shadow-pop);
+  font-size: 12px;
+  pointer-events: none;
+  display: grid;
+  gap: 4px;
+}
+
+.tooltip-title {
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.tooltip-row {
+  display: grid;
+  grid-template-columns: 12px auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.tooltip-key {
+  width: 12px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.tooltip-key.rect {
+  height: 10px;
+  border-radius: 2px;
+}
+
+.tooltip-key.band {
+  height: 8px;
+  background: var(--band);
+}
+
+.tooltip-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.tooltip-label {
+  color: var(--ink-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Benchmark track */
+.track {
+  position: relative;
+  width: 100%;
+  min-width: 120px;
+  padding-top: 6px;
+}
+
+.track-bar {
+  position: relative;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--surface-3);
+}
+
+.track-edge {
+  position: absolute;
+  top: -3px;
+  width: 1px;
+  height: 12px;
+  background: var(--line-strong);
+}
+
+.track-marker {
+  position: absolute;
+  top: -4px;
+  width: 2px;
+  height: 14px;
+  margin-left: -1px;
+  background: var(--ink-3);
+}
+
+.track-dot {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 2px var(--surface);
+}
+
+.track-dot.clipped {
+  background: var(--surface);
+  border: 2px solid var(--ink);
+}
+
+.track-labels {
+  position: relative;
+  height: 16px;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.track-labels span {
+  position: absolute;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}

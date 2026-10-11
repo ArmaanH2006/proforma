@@ -1,0 +1,293 @@
+/* App shell: top bar, stage rail, and the working sheet. */
+.app {
+  display: grid;
+  grid-template-columns: var(--rail-width) minmax(0, 1fr);
+  grid-template-rows: var(--topbar-height) minmax(0, 1fr);
+  min-height: 100vh;
+  /* Paint the rail column the full height of the page, hairline included. */
+  background: linear-gradient(
+    90deg,
+    var(--surface) calc(var(--rail-width) - 1px),
+    var(--line) calc(var(--rail-width) - 1px),
+    var(--line) var(--rail-width),
+    transparent var(--rail-width)
+  );
+}
+
+.topbar {
+  grid-column: 1 / -1;
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px 0 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.wordmark small {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.topbar-deal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding-left: 16px;
+  border-left: 1px solid var(--line);
+  height: 24px;
+}
+
+.topbar-deal strong {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topbar-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rail {
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + var(--topbar-height));
+  align-self: start;
+  height: calc(100vh - var(--topbar-height));
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 16px 12px;
+  border-right: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.rail-label {
+  padding: 4px 10px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.rail-item {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  column-gap: 8px;
+  align-items: baseline;
+  width: 100%;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  text-align: left;
+  color: var(--ink-2);
+}
+
+.rail-item:hover {
+  background: var(--surface-3);
+  color: var(--ink);
+}
+
+.rail-item[aria-current='page'] {
+  background: var(--accent-weak);
+  color: var(--ink);
+}
+
+.rail-item .step {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.rail-item[aria-current='page'] .step {
+  color: var(--accent);
+}
+
+.rail-item .name {
+  font-weight: 500;
+}
+
+.rail-item .status {
+  grid-column: 2;
+  font-size: 12px;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rail-link {
+  justify-self: start;
+  font-size: 12px;
+  color: var(--ink-2);
+}
+
+.rail-link:hover {
+  color: var(--accent);
+}
+
+.rail-footer {
+  margin-top: auto;
+  padding: 12px 10px 4px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--ink-3);
+  display: grid;
+  gap: 6px;
+}
+
+.main {
+  min-width: 0;
+  padding: 28px 32px 72px;
+}
+
+.view {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+}
+
+.view-header {
+  display: grid;
+  gap: 6px;
+}
+
+.view-header h1 {
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+
+.view-header p {
+  max-width: 72ch;
+  color: var(--ink-2);
+}
+
+.sheet {
+  display: grid;
+  grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.sheet > * {
+  min-width: 0;
+}
+
+.stack {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.stack-lg {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 1180px) {
+  .sheet {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sheet > .inputs {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 880px) {
+  .app {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: var(--topbar-height) auto minmax(0, 1fr);
+    background: none;
+  }
+  .rail {
+    position: sticky;
+    top: calc(env(safe-area-inset-top, 0px) + var(--topbar-height));
+    z-index: 15;
+    height: auto;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 8px 16px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    scrollbar-width: none;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+  .rail-label,
+  .rail-footer,
+  .rail-item .status {
+    display: none;
+  }
+  .rail-item {
+    width: auto;
+    grid-template-columns: auto auto;
+    white-space: nowrap;
+    padding: 6px 10px;
+  }
+  .main {
+    padding: 20px 16px 64px;
+  }
+  /* On phones, show results first; the inputs follow. */
+  .sheet > .inputs {
+    order: 2;
+  }
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    padding: 0 12px 0 16px;
+    gap: 10px;
+  }
+  .topbar-deal {
+    display: none;
+  }
+  .wordmark small {
+    display: none;
+  }
+}

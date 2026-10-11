@@ -1,0 +1,5 @@
+dist
+dist-embed
+coverage
+package-lock.json
+docs/screenshots

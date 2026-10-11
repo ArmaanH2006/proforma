@@ -1,0 +1,150 @@
+/*
+ * Layout: a fixed rail lists the six stages of a deal in order; each stage is a
+ * sheet with inputs on the left and live results on the right, on hairline-ruled
+ * surfaces. Ink-blue accent, cool neutrals, IBM Plex throughout (Serif only for
+ * the memo and the wordmark).
+ */
+:root {
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --bg: #f3f4f6;
+  --surface: #ffffff;
+  --surface-2: #f8f9fa;
+  --surface-3: #eceef2;
+  --line: #e2e5ea;
+  --line-strong: #c8cdd6;
+  --ink: #12161c;
+  --ink-2: #474f5c;
+  --ink-3: #6f7785;
+  --accent: #1f4fb8;
+  --accent-hover: #1a439d;
+  --accent-ink: #ffffff;
+  --accent-weak: #e8eefb;
+
+  --good: #146c37;
+  --good-weak: #e6f2ea;
+  --warn: #8a5a00;
+  --warn-weak: #fbf1dc;
+  --bad: #b42318;
+  --bad-weak: #fcecea;
+  --neutral: #4b5260;
+  --neutral-weak: #eef0f3;
+
+  /* Status marks from the chart palette: always paired with an icon and a label. */
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #d03b3b;
+
+  /* Categorical chart series, fixed order. */
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
+  --series-7: #6250d6;
+  --series-8: #e34948;
+  --series-muted: #a3a9b4;
+  /* One-hue ordinal steps (nested market sizes). */
+  --seq-1: #9ec5f4;
+  --seq-2: #5598e7;
+  --seq-3: #1c5cab;
+
+  --grid: #eceef1;
+  --axis: #c6cbd3;
+  --band: rgba(42, 120, 214, 0.12);
+
+  --radius: 6px;
+  --radius-sm: 4px;
+  --shadow-pop: 0 8px 28px rgba(18, 22, 28, 0.14), 0 1px 3px rgba(18, 22, 28, 0.08);
+  --rail-width: 232px;
+  --topbar-height: 52px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0d0f12;
+    --surface: #15181d;
+    --surface-2: #191d23;
+    --surface-3: #21262e;
+    --line: #262b33;
+    --line-strong: #363c47;
+    --ink: #e8eaee;
+    --ink-2: #b2b8c3;
+    --ink-3: #868e9b;
+    --accent: #8daaf5;
+    --accent-hover: #a9bff8;
+    --accent-ink: #0d0f12;
+    --accent-weak: #1b2540;
+    --good: #5cc787;
+    --good-weak: #11261a;
+    --warn: #e6b04f;
+    --warn-weak: #29210f;
+    --bad: #f1806f;
+    --bad-weak: #2c1613;
+    --neutral: #b2b8c3;
+    --neutral-weak: #21262e;
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-5: #d55181;
+    --series-6: #008300;
+    --series-7: #9085e9;
+    --series-8: #e66767;
+    --series-muted: #5d6573;
+    --seq-1: #184f95;
+    --seq-2: #2a78d6;
+    --seq-3: #86b6ef;
+    --grid: #20242b;
+    --axis: #3a414c;
+    --band: rgba(57, 135, 229, 0.18);
+    --shadow-pop: 0 10px 32px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0d0f12;
+  --surface: #15181d;
+  --surface-2: #191d23;
+  --surface-3: #21262e;
+  --line: #262b33;
+  --line-strong: #363c47;
+  --ink: #e8eaee;
+  --ink-2: #b2b8c3;
+  --ink-3: #868e9b;
+  --accent: #8daaf5;
+  --accent-hover: #a9bff8;
+  --accent-ink: #0d0f12;
+  --accent-weak: #1b2540;
+  --good: #5cc787;
+  --good-weak: #11261a;
+  --warn: #e6b04f;
+  --warn-weak: #29210f;
+  --bad: #f1806f;
+  --bad-weak: #2c1613;
+  --neutral: #b2b8c3;
+  --neutral-weak: #21262e;
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
+  --series-7: #9085e9;
+  --series-8: #e66767;
+  --series-muted: #5d6573;
+  --seq-1: #184f95;
+  --seq-2: #2a78d6;
+  --seq-3: #86b6ef;
+  --grid: #20242b;
+  --axis: #3a414c;
+  --band: rgba(57, 135, 229, 0.18);
+  --shadow-pop: 0 10px 32px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  color-scheme: dark;
+}
